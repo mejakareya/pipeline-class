@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -20,8 +21,11 @@ public class SwitchWindow {
     public void setup() {
 
 
+        FirefoxOptions firefoxOptions=new FirefoxOptions();
         WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        //chromeOptions.addArguments("--no-sandbox");
+        firefoxOptions.addArguments("--headless");
+        driver = new FirefoxDriver(firefoxOptions);
         driver.get("https://www.salesforce.com/in");
         driver.manage().window().maximize();
 
